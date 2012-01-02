@@ -2,3 +2,10 @@ ofxParticleEmitter
 ==================
 
 A port of a particle renderer that can be used in conjunction with Particle Designer (http://particledesigner.71squared.com/) and openframeworks
+
+Forked From https://github.com/sroske/ofxParticleEmitter
+
+Changes
+
+* Added Texture Handling Functions
+* Fixed XML tag issue with ParticleLifeSpan tag
