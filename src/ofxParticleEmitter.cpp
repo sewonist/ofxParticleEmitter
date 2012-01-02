@@ -93,6 +93,9 @@ void ofxParticleEmitter::exit()
 
 bool ofxParticleEmitter::loadFromXml( const std::string& filename )
 {
+    // Clean up things
+    exit();
+    
 	bool ok = false;
 	
 	settings = new ofxXmlSettings();
@@ -167,6 +170,8 @@ void ofxParticleEmitter::parseParticleConfig()
 	
 	radialAcceleration			= settings->getAttribute( "radialAcceleration", "value", radialAcceleration );
 	tangentialAcceleration		= settings->getAttribute( "tangentialAcceleration", "value", tangentialAcceleration );
+    radialAccelVariance			= settings->getAttribute( "radialAccelVariance", "value", radialAccelVariance );
+	tangentialAccelVariance		= settings->getAttribute( "tangentialAccelVariance", "value", tangentialAccelVariance );
 	
 	startColor.red				= settings->getAttribute( "startColor", "red", startColor.red );
 	startColor.green			= settings->getAttribute( "startColor", "green", startColor.green );

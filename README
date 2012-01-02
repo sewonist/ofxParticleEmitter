@@ -8,4 +8,7 @@ Forked From https://github.com/sroske/ofxParticleEmitter
 Changes
 
 * Added Texture Handling Functions
-* Fixed XML tag issue with ParticleLifeSpan tag
+* Fixed XML tag issue with particleLifeSpan tag
+* Added sourcePositionVariance tag to loadFromXml()
+* Added radialAccelVariance tag to loadFromXml()
+* Added tangentialAccelVariance tag to loadFromXml()
