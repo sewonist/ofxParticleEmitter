@@ -33,6 +33,7 @@ ofxParticleEmitter::ofxParticleEmitter()
 	
 	emitterType = kParticleTypeGravity;
 	texture = NULL;
+    textureName = "";
 	sourcePosition.x = sourcePosition.y = 0.0f;
 	sourcePositionVariance.x = sourcePositionVariance.y = 0.0f;
 	angle = angleVariance = 0.0f;								
@@ -132,6 +133,8 @@ void ofxParticleEmitter::parseParticleConfig()
 		texture->loadImage( imageFilename );
 		texture->setUseTexture( true );
 		texture->setAnchorPercent( 0.5f, 0.5f );
+        
+        textureName = imageFilename;
 		
 		textureData = texture->getTextureReference().getTextureData();
 	}
@@ -147,10 +150,14 @@ void ofxParticleEmitter::parseParticleConfig()
 	
 	sourcePosition.x			= settings->getAttribute( "sourcePosition", "x", sourcePosition.x );
 	sourcePosition.y			= settings->getAttribute( "sourcePosition", "y", sourcePosition.y );
+    
+    sourcePositionVariance.x			= settings->getAttribute( "sourcePositionVariance", "x", sourcePositionVariance.x );
+	sourcePositionVariance.y			= settings->getAttribute( "sourcePositionVariance", "y", sourcePositionVariance.y );
 	
 	speed						= settings->getAttribute( "speed", "value", speed );
 	speedVariance				= settings->getAttribute( "speedVariance", "value", speedVariance );
-	particleLifespan			= settings->getAttribute( "particleLifespan", "value", particleLifespan );
+	particleLifespan			= settings->getAttribute( "particleLifeSpan", "value", particleLifespan );
+    
 	particleLifespanVariance	= settings->getAttribute( "particleLifespanVariance", "value", particleLifespanVariance );
 	angle						= settings->getAttribute( "angle", "value", angle );
 	angleVariance				= settings->getAttribute( "angleVariance", "value", angleVariance );
@@ -474,7 +481,9 @@ void ofxParticleEmitter::drawTextures()
 		PointSprite* ps = &vertices[i];
 		ofSetColor( ps->color.red*255.0f, ps->color.green*255.0f, 
 				   ps->color.blue*255.0f, ps->color.alpha*255.0f );
+        //ofEnableAlphaBlending();
 		texture->draw( ps->x, ps->y, ps->size, ps->size );
+        //ofDisableAlphaBlending();
 	}
 	
 	glDisable(GL_BLEND);
@@ -603,4 +612,13 @@ void ofxParticleEmitter::drawPointsOES()
 #endif
 }
 
+void ofxParticleEmitter::changeTexture(string filename) {
+    
+    texture->loadImage(filename);
+    textureName = filename;
+}
 
+string ofxParticleEmitter::getTextureName() {
+    
+    return textureName;
+}

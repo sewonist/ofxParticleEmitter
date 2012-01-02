@@ -48,8 +48,8 @@ typedef struct {
 // Particle type
 enum kParticleTypes 
 {
-	kParticleTypeGravity,
-	kParticleTypeRadial
+	kParticleTypeGravity = 0,
+	kParticleTypeRadial = 1
 };
 
 // Structure that holds the location and size for each point sprite
@@ -172,6 +172,8 @@ public:
 	void	update();
 	void	draw( int x = 0, int y = 0 );
 	void	exit();
+    string  getTextureName();
+    void    changeTexture(string filename);
 
 	int				emitterType;
 	Vector2f		sourcePosition, sourcePositionVariance;			
@@ -216,6 +218,7 @@ protected:
 
 	ofImage*		texture;												
 	ofTextureData	textureData;
+    string          textureName;
 	
 	GLfloat			emissionRate;
 	GLfloat			emitCounter;	
