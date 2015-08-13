@@ -534,8 +534,8 @@ void ofxParticleEmitter::drawPoints()
     glBlendFunc(blendFuncSource, blendFuncDestination);
 	
 	// Enable and configure point sprites which we are going to use for our particles
-	glEnable(GL_POINT_SPRITE);
-	glTexEnvi( GL_POINT_SPRITE, GL_COORD_REPLACE, GL_TRUE );
+	//glEnable(GL_POINT_SPRITE);
+	//glTexEnvi( GL_POINT_SPRITE, GL_COORD_REPLACE, GL_TRUE );
 	
 	// Now that all of the VBOs have been used to configure the vertices, pointer size and color
 	// use glDrawArrays to draw the points
@@ -551,7 +551,7 @@ void ofxParticleEmitter::drawPoints()
 	//glDisableClientState(GL_POINT_SIZE_ARRAY_OES);
 	
 	
-	glDisable(GL_POINT_SPRITE);
+	//glDisable(GL_POINT_SPRITE);
 	
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	
